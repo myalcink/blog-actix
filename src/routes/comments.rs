@@ -49,9 +49,11 @@ fn user_comments(
 }
 
 pub fn configure(cfg: &mut web::ServiceConfig) {
-    cfg.service(
+    cfg.service(web::resource("/users/{id}/comments")
+        .route(web::get().to_async(user_comments)))
+        .service(
         web::resource("/users/{id}/comments")
-            .route(web::post().to_async(add_comment))
-            .route(web::get().to_async(post_comments)),
+                    .route(web::post().to_async(add_comment))
+                    .route(web::get().to_async(post_comments)),
     );
 }
