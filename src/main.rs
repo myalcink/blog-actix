@@ -10,5 +10,3 @@ fn main() -> std::io::Result<()> {
     let app = blog_actix::Blog::new(8998);
     app.run(database_url)
 }
-
-// Including comments in our post fetching functions
